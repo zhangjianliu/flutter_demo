@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(myApp());
+void main() => runApp(new MaterialApp(
+      title: '图标按钮组件示例',
+      home: new LayoutDemo(),
+    ));
 
-class myApp extends StatelessWidget {
-  @override
+class LayoutDemo extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '图标组件的使用',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('图标组件的使用'),
-        ),
-        body: new Column(
-          children: <Widget>[
-            new Icon(
-              Icons.phone,
-              color: Colors.lightGreen,
-              size: 80.0,
-            ),
-            new Icon(
-              Icons.playlist_add,
-              color: Colors.lightGreen,
-              size: 30.0,
-            ),
-            new Icon(
-              Icons.access_alarm,
-              color: Colors.lightGreen,
-              size: 80.0,
-            ),
-          ],
+    return new Scaffold(
+      appBar: AppBar(
+        title: Text('图标按钮组件使用示例'),
+      ),
+      body: new Center(
+        child: new IconButton(
+          icon: Icon(Icons.volume_up, size: 48.0, color: Colors.lightGreen),
+          tooltip: '按下操作',
+          onPressed: () {
+            print('按下操作');
+          },
         ),
       ),
     );
