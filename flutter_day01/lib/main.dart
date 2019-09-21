@@ -1,34 +1,24 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(myApp());
 
-class MyApp extends StatelessWidget {
+class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '容器组件示例',
+      title: '图片组件使用',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('容器组件示例'),
+          title: Text('图片组件使用指南'),
         ),
         body: Center(
-          // 添加容器
-          child: Container(
-            width: 200.0,
-            height: 200.0,
-            // 添加边框装饰效果
-            decoration: BoxDecoration(
-                color: Colors.white,
-                // 设置上限左右四个边框的样式
-                border: new Border.all(
-                    color: Colors.grey, // 边框颜色
-                    width: 8.0 // 边框粗细
-                    ),
-                borderRadius:
-                    const BorderRadius.all(const Radius.circular(8.0) // 边框的弧度
-                        )),
-            child: Text('Flutter',
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 28.0)),
+          child: new Image.network(
+            // 图片的url
+            'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=a9e671b9a551f3dedcb2bf64a4eff0ec/4610b912c8fcc3cef70d70409845d688d53f20f7.jpg',
+            width: 300.0,
+            height: 300.0,
+            // 填充模式
+            fit: BoxFit.cover,
           ),
         ),
       ),
