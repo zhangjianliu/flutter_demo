@@ -12,12 +12,11 @@ class LayoutDemo extends StatelessWidget {
         title: Text('图标按钮组件使用示例'),
       ),
       body: new Center(
-        child: new IconButton(
-          icon: Icon(Icons.volume_up, size: 48.0, color: Colors.lightGreen),
-          tooltip: '按下操作',
+        child: new RaisedButton(
           onPressed: () {
             print('按下操作');
           },
+          child: new Text('RaisedButton组件'),
         ),
       ),
     );
