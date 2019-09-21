@@ -1,22 +1,55 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MaterialApp(
-      title: '图标按钮组件示例',
-      home: new LayoutDemo(),
-    ));
+void main() => runApp(myApp());
 
-class LayoutDemo extends StatelessWidget {
+class myApp extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: AppBar(
-        title: Text('图标按钮组件使用示例'),
-      ),
-      body: new Center(
-        child: new RaisedButton(
-          onPressed: () {
-            print('按下操作');
-          },
-          child: new Text('RaisedButton组件'),
+    return MaterialApp(
+      title: '列表组件',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('列表组件'),
+        ),
+        body: new ListView(
+          children: <Widget>[
+            ListTile(
+              // 添加图标
+              leading: new Icon(Icons.phone),
+              // 添加文本
+              title: Text('phone'),
+            ),
+            ListTile(
+              // 添加图标
+              leading: new Icon(Icons.access_alarm),
+              // 添加文本
+              title: Text('access_alarm'),
+            ),
+            ListTile(
+              // 添加图标
+              leading: new Icon(Icons.backspace),
+              // 添加文本
+              title: Text('backspace'),
+            ),
+            ListTile(
+              // 添加图标
+              leading: new Icon(Icons.calendar_today),
+              // 添加文本
+              title: Text('calendar_today'),
+            ),
+            ListTile(
+              // 添加图标
+              leading: new Icon(Icons.dashboard),
+              // 添加文本
+              title: Text('dashboard'),
+            ),
+            ListTile(
+              // 添加图标
+              leading: new Icon(Icons.edit),
+              // 添加文本
+              title: Text('edit'),
+            ),
+          ],
         ),
       ),
     );
