@@ -1,57 +1,32 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(myApp());
+void main() =>
+    runApp(new MyApp(items: new List<String>.generate(100, (i) => 'Item $i')));
 
-class myApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  // 列表数据采集
+  final List<String> items;
+  MyApp({Key key, @required this.items}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final title = '长列表示例 ';
     return MaterialApp(
-      title: '列表组件',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('列表组件'),
-        ),
-        body: new ListView(
-          children: <Widget>[
-            ListTile(
-              // 添加图标
-              leading: new Icon(Icons.phone),
-              // 添加文本
-              title: Text('phone'),
-            ),
-            ListTile(
-              // 添加图标
-              leading: new Icon(Icons.access_alarm),
-              // 添加文本
-              title: Text('access_alarm'),
-            ),
-            ListTile(
-              // 添加图标
-              leading: new Icon(Icons.backspace),
-              // 添加文本
-              title: Text('backspace'),
-            ),
-            ListTile(
-              // 添加图标
-              leading: new Icon(Icons.calendar_today),
-              // 添加文本
-              title: Text('calendar_today'),
-            ),
-            ListTile(
-              // 添加图标
-              leading: new Icon(Icons.dashboard),
-              // 添加文本
-              title: Text('dashboard'),
-            ),
-            ListTile(
-              // 添加图标
-              leading: new Icon(Icons.edit),
-              // 添加文本
-              title: Text('edit'),
-            ),
-          ],
-        ),
-      ),
-    );
+        title: title,
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text(title),
+          ),
+          body: Container(
+            child: ListView.builder(
+                //列表长度
+                itemCount: items.length,
+                // 列表项构造器
+                itemBuilder: (context, index) {
+                  return new ListTile(
+                      leading: new Icon(Icons.phone),
+                      title: new Text('${items[index]}'));
+                }),
+          ),
+        ));
   }
 }
