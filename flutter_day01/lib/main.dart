@@ -6,22 +6,34 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '图片组件使用',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('图片组件使用指南'),
-        ),
-        body: Center(
-          child: new Image.network(
-            // 图片的url
-            'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=a9e671b9a551f3dedcb2bf64a4eff0ec/4610b912c8fcc3cef70d70409845d688d53f20f7.jpg',
-            width: 300.0,
-            height: 300.0,
-            // 填充模式
-            fit: BoxFit.cover,
+        title: '文本组件的使用',
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('文本组件的使用'),
           ),
-        ),
-      ),
-    );
+          body: new Column(
+            children: <Widget>[
+              new Text('红色+ 黑色删除线—+25号',
+                  style: new TextStyle(
+                      color: const Color(0xffff0000),
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: const Color(0xff000000),
+                      fontSize: 25.0)),
+              new Text(' 橙色 ＋ 下划线 ＋24 号 ',
+                  style: new TextStyle(
+                      color: const Color(0xffff9900),
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: const Color(0xff000000),
+                      fontSize: 25.0)),
+              new Text('红色+褐色删除线—+25号+ 加粗',
+                  style: new TextStyle(
+                      color: const Color(0xffff0000),
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: const Color(0xff000000),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.0)),
+            ],
+          ),
+        ));
   }
 }
