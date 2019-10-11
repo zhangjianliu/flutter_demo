@@ -14,6 +14,48 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Material App 示例",
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        '/first': (BuildContext content) => FirstPage(), // 添加路由
+        '/second': (BuildContext content) => SecondPage()
+      },
+      initialRoute: '/first', // 初始化路由页面
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: Text('我是第一个页面'),
+      ),
+      body: Center(
+        child: RaisedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/second'); // 跳转到第二个页面
+            },
+            child: Text('这是第一页', style: TextStyle(fontSize: 30.0))),
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: Text('我是第二个页面'),
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/first');
+          },
+          child: Text('这是第二页', style: TextStyle(fontSize: 28.0)),
+        ),
+      ),
     );
   }
 }
