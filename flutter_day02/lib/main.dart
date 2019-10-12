@@ -1,60 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-void main() => runApp(new MaterialApp(
-      title: 'BottomNavigationBar 使用示例',
-      home: new MyHomePage(),
-    ));
+void main() => runApp(new DefaultTabControllerSample());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'BottomNavigationBar 使用示例',
-      home: new MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 1; // 当前选中的索引
-  final _widgetOptions = [
-    Text('Index 0 : 信息'),
-    Text('Index 1: 通讯录'),
-    Text('Index 2: 发现'),
+class DefaultTabControllerSample extends StatelessWidget {
+  // 选项卡数据
+  final List<Tab> myTabs = <Tab>[
+    Tab(text: '选项卡一'),
+    Tab(text: '选项卡二'),
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: new AppBar(
-        title: Text('BottomNavigationBar 使用示例'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex), // 居中显示文本
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), title: Text("发现")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.contacts), title: Text("通讯录")),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), title: Text("信息")),
-        ],
-        currentIndex: _selectedIndex, // 当前选中的索引
-        fixedColor: Colors.deepOrange, // 选择中的颜色
-        onTap: _onItemTapped, //按下处理逻辑
+    return new MaterialApp(
+      home: DefaultTabController(
+        length: myTabs.length,
+        child: Scaffold(
+          appBar: AppBar(
+            // 添加导航栏
+            bottom: TabBar(
+              tabs: myTabs,
+            ),
+          ),
+          // 添加导航视图
+          body: TabBarView(
+            children: myTabs.map((Tab tab) {
+              return Center(child: Text(tab.text));
+            }).toList(),
+          ),
+        ),
       ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 }
